@@ -15,12 +15,12 @@ var outputDir = settings.OutputDirectory;
 
 
 function getConnectionString() {
-    if (typeof settings.ConnectionStrings.value !== 'undefined' && settings.ConnectionStrings.value !== null) {
-        return settings.ConnectionStrings.value;
+    if (typeof settings.ConnectionString.value !== 'undefined' && settings.ConnectionString.value !== null) {
+        return settings.ConnectionString.value;
     }
-    else if (typeof settings.ConnectionStrings.refFile !== 'undefined') {
-        let appSettings = require(path.join(ProjectFolder, settings.ConnectionStrings.refFile.fileLocation));
-        let access = settings.ConnectionStrings.refFile.access;
+    else if (typeof settings.ConnectionString.refFile !== 'undefined') {
+        let appSettings = require(path.join(ProjectFolder, settings.ConnectionString.refFile.fileLocation));
+        let access = settings.ConnectionString.refFile.access;
         let con = appSettings;
         for (let i = 0; i < access.length; i++) {
             con = con[access[i]];
