@@ -1,0 +1,15 @@
+{
+  "name": "entityframeworkcorescafoldingtasks",
+  "version": "1.0.0",
+  "description": "Adds Tasks to the Visual Studio Task Runner Explorer For doing EF Core Scaffolding and Migration So you don't have to run command in the command line",
+  "scripts": {
+    "postinstall": "vs-tsconfig-fix.js"
+  },
+  "author": "Joshua-Bomba",
+  "license": "ISC",
+    "dependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "node-powershell": "^5.0.1"
+  }
+}
