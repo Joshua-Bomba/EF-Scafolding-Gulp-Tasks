@@ -1,0 +1,20 @@
+{
+  "EFProjectFolder": "<Relative path to EF Project Folder>",
+  "ContextClassName": "<Name of your DbContext>",
+  "OutputNamespace": "<Name Space for your DBContext and models>",
+  "OutputDirectory": "<Folder relative to the EF Project Folder to output your models into>",
+  "ConnectionString": {
+    "value": null,/*you can put your connection string directly in here leave it null otherwise*/
+    "refFile": {/*this lets you reference an appsettings file*/
+      "fileLocation": "appsettings.json",
+      "access": [ "ConnectionStrings", "db" ]/*the path in your appsettings file to retrieve the connectionstring*/
+    }
+  },
+  "Provider": "Microsoft.EntityFrameworkCore.SqlServer",
+  /*These are the commands to install dependencies required to generate the models*/
+  "Dependencies": [
+    "dotnet tool install --global dotnet-ef",
+    "dotnet tool update --global dotnet-ef",
+    "dotnet add package Microsoft.EntityFrameworkCore.Design" 
+  ]
+}
