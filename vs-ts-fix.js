@@ -20,11 +20,11 @@ let rootDir = path.resolve(__dirname);
 let lock = null;
 if(fs.existsSync(path.join(rootDir,'package-lock.json')))
 {
-    lock = require('../package-lock.json');
+    lock = require('./package-lock.json');
 }
 else if(fs.existsSync(path.join(rootDir,'npm-shrinkwrap.json')))
 {
-    lock = require('../npm-shrinkwrap.json');
+    lock = require('./npm-shrinkwrap.json');
 }
 
 console.log('starting tsconfig.json cleanup');

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Adds Tasks to the Visual Studio Task Runner Explorer For doing EF Core Scaffolding and Migration So you don't have to run command in the command line",
   "scripts": {
-    "postinstall": "vs-tsconfig-fix.js"
+    "postinstall": "node vs-ts-fix.js"
   },
   "author": "Joshua-Bomba",
   "license": "ISC",
