@@ -32,10 +32,8 @@ function getConnectionString() {
     }
 }
 
-async function buildDbContext() {
-    await ScaffoldDbContext();
-}
-
+//I Recommend you do this only when you are not reference any of the models 
+//Think the scafolding needs the project to buld
 async function cleanModelsFolder() {
     await del(path.join(ProjectFolder, `${outputDir}/*`), {force: true});
 }
@@ -61,18 +59,14 @@ async function installScafoldDependencies() {
     }
 }
 
-
-exports.buildDbContext = buildDbContext;
-exports.installScafoldDependencies = installScafoldDependencies;
-exports.cleanModelsFolder = cleanModelsFolder;
-
-
+//this will overwrite any existing models so make partial classes somewhere else 
+//don't modify the files directly
 async function ScaffoldDbContext() {
     let ps = new PowerShell.PowerShell({ debugMsg: false, spawnOptions: { cwd: ProjectFolder } });
 
     try {
         let conString = getConnectionString();
-        let str = `dotnet ef dbcontext scaffold "${conString}"  ${_contextProvider} -o "${outputDir}" -c "${_contextClass}" --context-namespace ${_namespace} -d --no-onconfiguring`;
+        let str = `dotnet ef dbcontext scaffold "${conString}"  ${_contextProvider} -o "${outputDir}" -c "${_contextClass}" --context-namespace ${_namespace} -d --no-onconfiguring -f`;
         console.log(str);
         ps.streams.stdout.pipe(process.stdout);
         await ps.invoke(str);
@@ -81,3 +75,8 @@ async function ScaffoldDbContext() {
         ps.dispose();
     }
 }
+
+
+exports.buildDbContext = ScaffoldDbContext;
+exports.installScafoldDependencies = installScafoldDependencies;
+exports.cleanModelsFolder = cleanModelsFolder;
